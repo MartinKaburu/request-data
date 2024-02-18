@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t secrets.DOCKER_USERNAME/request-data:${{ github.sha }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/request-data:${{ github.sha }} .
 
       - name: Push Docker image to Docker Hub
-        run: docker push secrets.DOCKER_USERNAME/request-data:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/request-data:${{ github.sha }}
