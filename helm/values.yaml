@@ -2,8 +2,8 @@ fullnameOverride: request-data
 replicaCount: 1
 image:
   repository: martinkaburu/request-data
-  tag: latest
-  pullPolicy: IfNotPresent
+  tag: ""
+  pullPolicy: Always
 
 service:
   type: ClusterIP
