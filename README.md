@@ -27,5 +27,5 @@ argocd app create request-data \
   --sync-policy automated \
   --auto-prune \
   --revision main \
-  --helm-set image.repository=martinkaburu/request-data
+  --helm-set image.repository=martinkaburu/request-data \
   --helm-set image.tag=latest
