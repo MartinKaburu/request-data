@@ -1,0 +1,4 @@
+name: request-data
+version: 0.1.0
+apiVersion: v1
+description: A Helm chart for the Inverse IP application
