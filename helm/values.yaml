@@ -1,3 +1,4 @@
+fullnameOverride: request-data
 replicaCount: 1
 image:
   repository: martinkaburu/request-data
