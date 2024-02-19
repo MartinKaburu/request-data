@@ -2,9 +2,8 @@ fullnameOverride: request-data
 replicaCount: 1
 image:
   repository: martinkaburu/request-data
-  tag: PLACEHOLDER
+  tag: 05f802e4b0b6e7a2d11f766bffe4860d9befcf0f
   pullPolicy: Always
-
 service:
   type: ClusterIP
   port: 80
