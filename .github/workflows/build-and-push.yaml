@@ -31,10 +31,11 @@ jobs:
       - name: Update values.yaml
         run: |
           yq eval ".image.tag = \"${{ github.sha }}\"" -i helm/values.yaml
+          cat helm/values.yaml
 
       - name: Commit changes
         run: |
-          git config --local user.name "ReqDataGithubBot"
+          git config --global credential.helper '!f() { sleep 1; echo "username=git token=${{ secrets.GH_TOKEN }}"; }; f'
           git add helm/values.yaml
           git commit -m "Update image tag to latest commit"
           git push origin main
