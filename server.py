@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS req_data (id INTEGER PRIMARY KEY, original_ip TEXT, r
 conn.commit()
 
 
+# Main route
 @app.route('/')
 def get_reverse_ip():
     client_ip = request.remote_addr
