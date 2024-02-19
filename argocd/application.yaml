@@ -19,4 +19,4 @@ spec:
     automated:
       prune: true
   syncOptions:
-    - PreSync="update-values.sh"
+    - PreSync='GIT_SHA=$(git rev-parse HEAD) && sed -i "s/PLACEHOLDER/$GIT_SHA/g" values.yaml'

@@ -2,7 +2,7 @@ fullnameOverride: request-data
 replicaCount: 1
 image:
   repository: martinkaburu/request-data
-  tag: ""
+  tag: PLACEHOLDER
   pullPolicy: Always
 
 service:
