@@ -30,7 +30,7 @@ spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
     - host: {{ .Values.ingress.host }}
-      http:
+      tcp:
         paths:
           - pathType: Prefix
             path: /
@@ -38,5 +38,5 @@ spec:
               service:
                 name: {{ include "request-data.name" . }}
                 port:
-                  number: 80
+                  number: 8080
 
