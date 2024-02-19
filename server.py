@@ -18,7 +18,6 @@ conn.commit()
 @app.route('/')
 def get_reverse_ip():
     client_ip = request.remote_addr
-    print(client_ip)
     reversed_ip = '.'.join(reversed(client_ip.split('.')))  # opting to reverse the order of the IP numbers not digits
 
     # Save original IP, reversed IP, and headers in the database
@@ -30,6 +29,7 @@ def get_reverse_ip():
     return reversed_ip
 
 
+# Extra route to view all requests made to server within it's life span
 @app.route('/all_ips', methods=['GET'])
 def get_all_ips():
     cursor.execute("SELECT original_ip, reversed_ip, headers FROM req_data")
