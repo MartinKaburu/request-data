@@ -23,6 +23,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/load-balancer-attributes: "preserve_client_ip.enabled=true"
+    alb.ingress.kubernetes.io/subnets: subnet-01a73a7bd5afd0d01, subnet-0fae68a7b935cfab, subnet-06eec87f6caf2eb8b
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:

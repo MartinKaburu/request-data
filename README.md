@@ -24,6 +24,22 @@ curl echo.martinkaburu.me
 
 
 # Installation
+### AWS ALB Controller
+Follow the commands to configure the IAM role and policy on the official documentation [here](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
+```Bash
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update eks
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=mk-apps \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+--set vpcId=vpc-<id>  \
+--set region=eu-central-1
+
+```
+
+
 ### ArgoCD Installation
 ```Bash
 helm repo add argo https://argoproj.github.io/argo-helm
