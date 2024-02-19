@@ -2,7 +2,7 @@ fullnameOverride: request-data
 replicaCount: 1
 image:
   repository: martinkaburu/request-data
-  tag: 05f802e4b0b6e7a2d11f766bffe4860d9befcf0f
+  tag: 21c946d18189b594f9076489805f667c42bf750d
   pullPolicy: Always
 service:
   type: LoadBalancer
