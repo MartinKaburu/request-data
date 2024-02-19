@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "request-data.name" . }}
+  name: {{ include "request-data.fullname" . }}
   labels:
     app: {{ include "request-data.name" . }}
 spec:
@@ -11,3 +11,25 @@ spec:
       targetPort: 5000
   selector:
     app: {{ include "request-data.name" . }}
+---
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: {{ include "request-data.name" . }}
+  labels:
+    app: {{ include "request-data.name" . }}
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/target-type: "ip"
+spec:
+  host: {{ .Values.service.host }}
+  http:
+    paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: {{ include "request-data.name" . }}
+            port:
+              number: 80

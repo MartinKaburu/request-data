@@ -6,4 +6,5 @@ image:
   pullPolicy: Always
 service:
   type: LoadBalancer
+  host: echo.martinkaburu.me
   port: 80
