@@ -22,7 +22,9 @@ metadata:
     app: {{ include "request-data.name" . }}
   annotations:
     kubernetes.io/ingress.class: "alb"
-    alb.ingress.kubernetes.io/load-balancer-attributes: "preserve_client_ip.enabled=true"
+    alb.ingress.kubernetes.io/target-type: "ip"
+    alb.ingress.kubernetes.io/target-group-attributes: "preserve_client_ip.enabled=true"
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/subnets: subnet-01a73a7bd5afd0d01, subnet-0fae68a7b935cfab7, subnet-06eec87f6caf2eb8b
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
