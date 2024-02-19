@@ -1,22 +1,25 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: req-data-app
-spec:
-  project: default
-  source:
-    repoURL: 'https://github.com/martinkaburu/request-data.git'
-    path: helm/
-    targetRevision: main
-    helm:
-      parameters:
-        - name: image.tag
-          generate: true
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: req-data
-  syncPolicy:
-    automated:
-      prune: true
+project: default
+source:
+  repoURL: 'https://github.com/martinkaburu/request-data.git'
+  path: helm/
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values.yaml
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: req-data
+syncPolicy:
+  automated:
+    prune: true
   syncOptions:
-    - PreSync='GIT_SHA=$(git rev-parse HEAD) && sed -i "s/PLACEHOLDER/$GIT_SHA/g" values.yaml'
+    - Replace=true
+    - Validate=false
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+  retry:
+    limit: 2
+    backoff:
+      duration: 5s
+      factor: 2
+      maxDuration: 3m0s

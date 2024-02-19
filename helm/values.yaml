@@ -5,5 +5,5 @@ image:
   tag: 05f802e4b0b6e7a2d11f766bffe4860d9befcf0f
   pullPolicy: Always
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
