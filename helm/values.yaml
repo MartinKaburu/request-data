@@ -1,5 +1,6 @@
 fullnameOverride: request-data
 replicaCount: 1
+namespace: req-data
 image:
   repository: martinkaburu/request-data
   tag: 21c946d18189b594f9076489805f667c42bf750d

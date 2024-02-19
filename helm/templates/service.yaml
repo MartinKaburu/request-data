@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "request-data.fullname" . }}
+  namespace: {{ Values.namespace }}
   labels:
     app: {{ include "request-data.name" . }}
 spec:
@@ -16,6 +17,7 @@ apiVersion: v1
 kind: Ingress
 metadata:
   name: {{ include "request-data.name" . }}
+  namespace: {{ Values.namespace }}
   labels:
     app: {{ include "request-data.name" . }}
   annotations:
@@ -30,6 +32,6 @@ spec:
         path: /
         backend:
           service:
-            name: {{ include "request-data.name" . }}
+            name: {{ include "request-data.fullname" . }}
             port:
               number: 80
