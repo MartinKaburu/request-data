@@ -18,7 +18,8 @@ conn.commit()
 @app.route('/')
 def get_reverse_ip():
     client_ip = request.remote_addr
-    reversed_ip = '.'.join(reversed(client_ip.split('.')))
+    print(client_ip)
+    reversed_ip = '.'.join(reversed(client_ip.split('.')))  # opting to reverse the order of the IP numbers not digits
 
     # Save original IP, reversed IP, and headers in the database
     headers = json.dumps(dict(request.headers))
