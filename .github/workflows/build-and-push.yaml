@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check if user is allowed to trigger build
+        if: github.actor != 'ReqDataGithubBot'
+        run: |
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -24,3 +27,14 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/request-data:${{ github.sha }}
+
+      - name: Update values.yaml
+        run: |
+          yq eval ".image.tag = \"${{ github.sha }}\"" -i helm/values.yaml
+
+      - name: Commit changes
+        run: |
+          git config --local user.name "ReqDataGithubBot"
+          git add helm/values.yaml
+          git commit -m "Update image tag to latest commit"
+          git push origin main
