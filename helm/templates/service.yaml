@@ -25,9 +25,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/target-type: "ip"
 spec:
-  ingressClassName: {{ .Values.service.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
-    - host: {{ .Values.service.host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - pathType: Prefix
