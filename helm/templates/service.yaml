@@ -22,6 +22,7 @@ metadata:
     app: {{ include "request-data.name" . }}
   annotations:
     kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/load-balancer-attributes: "preserve_client_ip.enabled=true"
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
