@@ -3,7 +3,7 @@ replicaCount: 1
 namespace: req-data
 image:
   repository: martinkaburu/request-data
-  tag: 4441307c0b436d65ab12b759024267977dbdb7b8
+  tag: dc062d8353625f95c98d7de314bf8010f5a08904
   pullPolicy: Always
 service:
   type: LoadBalancer
