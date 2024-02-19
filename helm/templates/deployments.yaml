@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "request-data.fullname" . }}
+  name: {{ include "request-data.name" . }}
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ include "request-data.name" . }}

@@ -1,22 +1,24 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: v1
 kind: Ingress
 metadata:
-  name: request-data
-  namespace: req-data
+  name: {{ include "request-data.name" . }}
+  namespace: {{ .Values.namespace }}
   labels:
-    app: request-data
+    app: {{ include "request-data.name" . }}
   annotations:
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/target-type: "ip"
 spec:
-  host: echo.martinkaburu.me
-  http:
-    paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: release-name-request-data
-            port:
-              number: 80
+  ingressClassName: {{ .Values.service.ingressClassName }}
+  rules:
+    - host: {{ .Values.service.host }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: {{ include "request-data.name" . }}
+                port:
+                  number: 80
