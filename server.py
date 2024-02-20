@@ -18,6 +18,15 @@ conn.commit()
 # Main route
 @app.route('/')
 def get_reverse_ip():
+    # Check if X-FORWARDED-FOR header exists, if it does, the request went through a proxy, nat or lb before getting to
+    # the server therefore we should get the origin address from the header.
+    if 'X-Forwarded-For' in request.headers:
+        # Split the header value by comma and retrieve the first IP address
+        client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
+    else:
+        # Request went through no proxies and the remote_addr is accurate
+        client_ip = request.remote_addr
+
     client_ip = request.remote_addr
     reversed_ip = '.'.join(reversed(client_ip.split('.')))  # opting to reverse the order of the IP numbers not digits
 
