@@ -10,16 +10,16 @@ Github Repo: https://github.com/MartinKaburu/request-data
 # Testing
 To test the endpoint, open your terminal and run the following commands
 ```Bash
-# Get your IP address
+# Get your external IP address
 curl icanhazip.com
 # NOTE: If your using the 
 
 
 # Get reversed IP
-curl echo.martikaburu.me
+curl echo.martinkaburu.me
 
 # Get all IPs in server
-curl echo.martinkaburu.me
+curl echo.martinkaburu.me/all_ips
 ```
 
 
