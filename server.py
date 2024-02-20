@@ -20,7 +20,7 @@ conn.commit()
 def get_reverse_ip():
     # Check if X-FORWARDED-FOR header exists, if it does, the request went through a proxy, nat or lb before getting to
     # the server therefore we should get the origin address from the header.
-    if 'X-Forwarded-For' in request.headers:
+    if 'X-Forwarded-For' in dict(request.headers):
         # Split the header value by comma and retrieve the first IP address
         client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     else:
