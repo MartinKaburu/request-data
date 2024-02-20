@@ -9,7 +9,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 5000
+      targetPort: {{ .Values.image.port }}
   selector:
     app: {{ include "request-data.name" . }}
 ---
@@ -23,14 +23,13 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/target-type: "ip"
-    alb.ingress.kubernetes.io/target-group-attributes: "preserve_client_ip.enabled=true"
     alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/subnets: subnet-01a73a7bd5afd0d01, subnet-0fae68a7b935cfab7, subnet-06eec87f6caf2eb8b
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
     - host: {{ .Values.ingress.host }}
-      tcp:
+      http:
         paths:
           - pathType: Prefix
             path: /
@@ -38,5 +37,5 @@ spec:
               service:
                 name: {{ include "request-data.name" . }}
                 port:
-                  number: 8080
+                  number: {{ .Values.service.port }}
 

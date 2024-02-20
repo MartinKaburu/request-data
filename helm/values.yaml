@@ -5,9 +5,10 @@ image:
   repository: martinkaburu/request-data
   tag: 8e1f27d1fa87d904400689cdaf4f239938e0e6ca
   pullPolicy: Always
+  port: 5000
 service:
   type: LoadBalancer
-  port: 8080
+  port: 80
 ingress:
   ingressClassName: alb
   host: echo.martinkaburu.me
