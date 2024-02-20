@@ -3,7 +3,7 @@ replicaCount: 1
 namespace: req-data
 image:
   repository: martinkaburu/request-data
-  tag: 97196c26a6db7a77bb0cf7943d85166743832475
+  tag: b16431807340860acbed9b116b4af29b037cef76
   pullPolicy: Always
   port: 5000
 service:
