@@ -12,8 +12,6 @@ To test the endpoint, open your terminal and run the following commands
 ```Bash
 # Get your external IP address
 curl icanhazip.com
-# NOTE: If your using the 
-
 
 # Get reversed IP
 curl echo.martinkaburu.me
