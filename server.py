@@ -27,8 +27,8 @@ def get_reverse_ip():
         # Request went through no proxies and the remote_addr is accurate
         client_ip = request.remote_addr
 
-    client_ip = request.remote_addr
-    reversed_ip = '.'.join(reversed(client_ip.split('.')))  # opting to reverse the order of the IP numbers not digits
+    # Opting to reverse the order of the IP numbers not digits i.e 12.34.56.78 == 78.56.34.12 and not 87.65.43.21
+    reversed_ip = '.'.join(reversed(client_ip.split('.')))
 
     # Save original IP, reversed IP, and headers in the database
     headers = json.dumps(dict(request.headers))
