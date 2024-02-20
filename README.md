@@ -3,7 +3,7 @@ App to echo out HTTP request origin and headers.
 
 App is running on HTTP at: http://echo.martinkaburu.me
 
-ArgoCD Server: http://a33293180ce824994b0af573371a5ce9-1463041853.eu-central-1.elb.amazonaws.com(Username and Password Shared via email)
+ArgoCD Server: http://a33293180ce824994b0af573371a5ce9-1463041853.eu-central-1.elb.amazonaws.com (Username and Password shared via email)
 
 Github Repo: https://github.com/MartinKaburu/request-data
 
